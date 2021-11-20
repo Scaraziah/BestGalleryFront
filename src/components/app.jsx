@@ -24,23 +24,27 @@ function App() {
             }
         },[jwt])
 
+     
+
   return (
     <div>
           <NavBar user ={user} />
+          {user && <div>Welcome {user.name}</div>}
         
             <Routes>
-              <Route path="/profile" 
-              render = {(props) => {
-                if(!user){
-                  return <Navigate to = "/login" replace={true} />;
+              {/* <Route path="/profile" 
+              render = {() => {
+                if(user){
+                  return <Navigate to = "/test" replace={true} />;
                 }else {
-                  return<Profile {...props} user ={user} />
+                  return <Navigate to = "/login" replace={true} />;
                 }
               }}
-              />
-                <Route path="/" element = { <LandingScreen />} />
+              /> */}
+                <Route path="/" element = { <LogIn />} />
                 <Route path = "/signup" element = { <SignUp />} /> 
                 <Route path = "/login" element = {<LogIn />} /> 
+                <Route path = "/test" element = {<Profile user ={user}/>} />
             </Routes>
         
     </div>

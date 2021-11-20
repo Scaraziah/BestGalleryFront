@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container, Button, } from "react-bootstrap";
+import deerBarn from '../images/deerBarn.png'
 require("./navbar.css");
 
 const NavBar = ({ user }) => {
@@ -15,13 +16,7 @@ const NavBar = ({ user }) => {
       <Navbar bg="dark">
         <Container>
           <Navbar.Brand href="#home">
-            <img
-              scr="../images/deerBarn.png"
-              width="150"
-              // height="30"
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            />
+            <img src={deerBarn} alt="deerBarn" />
           </Navbar.Brand>
           <div>
             {user && <h4 class = "text-primary" >Welcome {user.name}</h4>}
