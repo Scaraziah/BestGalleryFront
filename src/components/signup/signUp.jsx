@@ -29,7 +29,7 @@ function SignUp() {
              }
              await axios.post(`http://localhost:5000/api/users/`, user)
              .then(response => localStorage.setItem('token', response.data))
-             navigate(`/profile`)
+             navigate(`/newProfile`)
           };  
   
         

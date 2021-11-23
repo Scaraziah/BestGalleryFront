@@ -6,9 +6,8 @@ require("./navbar.css");
 
 const NavBar = ({ user }) => {
     
-  const handleClick = id =>  {
+  const handleClick = () =>  {
     const jwt = localStorage.removeItem('token')
-    window.location.reload(false);
 }
 
     return (
@@ -44,7 +43,7 @@ const NavBar = ({ user }) => {
                   </li>
                 <li>
                   <Link to="/login">  
-                  <Button variant="light" onClick = {handleClick}>Logout</Button>{" "}
+                    <Button variant="light" onClick = {handleClick}>Logout</Button>{" "}
                   </Link>
                 </li>
                 </React.Fragment>

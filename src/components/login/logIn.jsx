@@ -25,7 +25,7 @@ function LogIn() {
            await axios.post(`http://localhost:5000/api/auth/`, user)
            .then(response => {
                localStorage.setItem('token', response.data);
-               navigate('../test', {replace: true});
+               navigate('../profile', {replace: true});
            })
         };  
 

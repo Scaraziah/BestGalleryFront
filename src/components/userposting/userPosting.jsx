@@ -8,17 +8,20 @@ import {
 const  UserPostings = (props) => {
     const [posts, setPost] = useState([]);
     const jwt = localStorage.getItem('token');
+    const [user, setUser] = useState(null);
 
-    console.log(props.user)
+    useEffect(() => {
+        setUser(props.user)
+      },[props]);
 
     useEffect(() =>{
-        console.log(props.user.name);
-        axios.get(`http://localhost:5000/api/post/${props.user.name}`)
+        const name = user? user.name: "";
+        axios.get(`http://localhost:5000/api/post/${name}`)
         .then(response => { 
             setPost(response.data);
             console.log(response.data);
         })
-    },[props.user])
+    },[user])
 
 
     const handleClick = id =>  {

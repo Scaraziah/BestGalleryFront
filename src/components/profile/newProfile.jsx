@@ -2,33 +2,41 @@ import React, { useState } from 'react';
 import { useNavigate  } from "react-router-dom"
 import axios from 'axios';
 
-function SignUp() {
+function NewProfile(props) {
     const navigate = useNavigate();
-    const [name, setName] = useState ('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState ('');
+    const [name, setName] = useState(props.user.name)
+    const [lat, setLat] = useState ();
+    const [lng, setLng] = useState ();
+    const [text, setText] = useState('');
+    const [picLink, setPicLink] = useState('');
   
-    const handleNameChange = (event) => {
-        setName(event.target.value);
+    const handleLat = (event) => {
+        setLat(event.target.value);
+    };
+    
+    const handleLng = (event) => {
+        setLng(event.target.value);
     };
 
-      const handleEmailChange = (event) => {
-          setEmail(event.target.value);
-      };
-        
-      const handlePasswordChange = (event) => {
-          setPassword(event.target.value);
-      };
+    const handleText = (event) => {
+        setText(event.target.value);
+    };
+
+    const handlePic = (event) => {
+        setPicLink(event.target.value);
+    };
   
       const handleSubmit = async(event)=>{
           event.preventDefault();
-          const user={
-            name: name,  
-            email: email,
-            password: password
+          const post={
+            name:  name,
+            picLink: picLink,
+            lat: lat,
+            lng: lng, 
+            text: text
              }
-             await axios.post(`http://localhost:5000/api/users/`, user)
-             .then(response => localStorage.setItem('token', response.data))
+             console.log(post)
+             await axios.post(`http://localhost:5000/api/post/`, post)
              navigate(`/profile`)
           };  
   
@@ -39,13 +47,15 @@ function SignUp() {
             <form onSubmit ={handleSubmit}>
                 <div className= " row form-group">
                     <div className = "col">
-                      <input type="name" placeholder="Enter User Name" onChange={handleNameChange} />
+                      <input type="lat" placeholder="Latitude " onChange={handleLat} />
                       <br></br>
-                      <input type="email" placeholder="Enter email" onChange={handleEmailChange} />
+                      <input type="lng" placeholder="Longitude " onChange={handleLng} />
                       <br></br>
-                      <input type="password" placeholder="Password" onChange={handlePasswordChange}/>
+                      <input type="text" placeholder="About your adventure!" onChange={handleText} />
                       <br></br>
-                      <button variant="primary" type="submit">Create User</button>
+                      <input type="picLink" placeholder="Link to Picture" onChange={handlePic} />
+                      <br></br>
+                      <button variant="primary" type="submit">Add Trip!</button>
                       <br></br>  
                     </div>
                   </div>
@@ -56,4 +66,4 @@ function SignUp() {
 }
 
 
-export default SignUp;
+export default NewProfile;

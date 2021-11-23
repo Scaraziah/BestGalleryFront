@@ -4,12 +4,12 @@ import {
     Route,
     Navigate
 } from "react-router-dom";
-import LandingScreen from './landingScreen';
 import LogIn from './login/logIn'
 import SignUp from './signup/signUp';
 import jwt_decode from "jwt-decode";
 import Profile from './profile/profile';
 import NavBar from './navbar/navBar';
+import NewProfile from './profile/newProfile';
 
 function App() {
     const [user, setUser] = useState()
@@ -28,14 +28,12 @@ function App() {
 
   return (
     <div>
-          <NavBar user ={user} />
-          {user && <div>Welcome {user.name}</div>}
-        
+          <NavBar user ={user} />       
             <Routes>
               {/* <Route path="/profile" 
-              render = {() => {
+              render = {(props) => {
                 if(user){
-                  return <Navigate to = "/test" replace={true} />;
+                  return <Profile {...props} user ={user} />;
                 }else {
                   return <Navigate to = "/login" replace={true} />;
                 }
@@ -44,7 +42,8 @@ function App() {
                 <Route path="/" element = { <LogIn />} />
                 <Route path = "/signup" element = { <SignUp />} /> 
                 <Route path = "/login" element = {<LogIn />} /> 
-                <Route path = "/test" element = {<Profile user ={user}/>} />
+                <Route path = "/profile" element = {<Profile user ={user}/>} />
+                <Route path = "/newProfile" element = {<NewProfile user ={user}/>} />
             </Routes>
         
     </div>
