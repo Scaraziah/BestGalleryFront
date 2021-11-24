@@ -30,14 +30,14 @@ function Bio(props) {
     axios.delete(`http://localhost:5000/api/bio/${id}`)
   };
 
-  const test = user? user.name: "user";
+  const userName = user? user.name: "user";
 
   return (
     <Card style={{ width: "18rem" }}>
       {/* <ProfilePic /> */}
       <Card.Body>
         {/*********** PROFILE NAME LOGIC GOES HERE ***********/}
-        <Card.Title>{test}</Card.Title>
+        <Card.Title>{userName}</Card.Title>
         <p>Bio:</p>
         {/*********** BIO LOGIC GOES HERE ***********/}
         <Card.Text>
@@ -52,7 +52,7 @@ function Bio(props) {
                       <Button
                         variant="danger"
                         type="delete"
-                        onClick={() => handleClick(bio.id)}
+                        onClick={() => handleClick(bio._id)}
                       >
                         Delete Bio
                       </Button>

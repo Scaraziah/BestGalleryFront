@@ -5,38 +5,26 @@ import axios from 'axios';
 function NewProfile(props) {
     const navigate = useNavigate();
     const [name, setName] = useState(props.user.name)
-    const [lat, setLat] = useState ();
-    const [lng, setLng] = useState ();
+    const [proPic, setProPic] = useState ('');
     const [text, setText] = useState('');
-    const [picLink, setPicLink] = useState('');
   
-    const handleLat = (event) => {
-        setLat(event.target.value);
-    };
-    
-    const handleLng = (event) => {
-        setLng(event.target.value);
+    const handleProLink = (event) => {
+        setProPic(event.target.value);
     };
 
-    const handleText = (event) => {
-        setText(event.target.value);
-    };
-
-    const handlePic = (event) => {
-        setPicLink(event.target.value);
-    };
+      const handleProInfo = (event) => {
+          setText(event.target.value);
+      };
   
       const handleSubmit = async(event)=>{
           event.preventDefault();
-          const post={
+          const bio={
             name:  name,
-            picLink: picLink,
-            lat: lat,
-            lng: lng, 
+            proPic: proPic,  
             text: text
              }
-             console.log(post)
-             await axios.post(`http://localhost:5000/api/post/`, post)
+             console.log(bio)
+             await axios.post(`http://localhost:5000/api/bio/`, bio)
              navigate(`/profile`)
           };  
   
@@ -47,15 +35,11 @@ function NewProfile(props) {
             <form onSubmit ={handleSubmit}>
                 <div className= " row form-group">
                     <div className = "col">
-                      <input type="lat" placeholder="Latitude " onChange={handleLat} />
+                      <input type="proPic" placeholder="Pic Link" onChange={handleProLink} />
                       <br></br>
-                      <input type="lng" placeholder="Longitude " onChange={handleLng} />
+                      <input type="text" placeholder="About You" onChange={handleProInfo} />
                       <br></br>
-                      <input type="text" placeholder="About your adventure!" onChange={handleText} />
-                      <br></br>
-                      <input type="picLink" placeholder="Link to Picture" onChange={handlePic} />
-                      <br></br>
-                      <button variant="primary" type="submit">Add Trip!</button>
+                      <button variant="primary" type="submit">Update Profile</button>
                       <br></br>  
                     </div>
                   </div>

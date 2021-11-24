@@ -10,6 +10,7 @@ import jwt_decode from "jwt-decode";
 import Profile from './profile/profile';
 import NavBar from './navbar/navBar';
 import NewProfile from './profile/newProfile';
+import AddPost from './userposting/addPosting';
 
 function App() {
     const [user, setUser] = useState()
@@ -44,6 +45,7 @@ function App() {
                 <Route path = "/login" element = {<LogIn />} /> 
                 <Route path = "/profile" element = {<Profile user ={user}/>} />
                 <Route path = "/newProfile" element = {<NewProfile user ={user}/>} />
+                <Route path = "/addPost" element = {<AddPost user = {user}/>} />
             </Routes>
         
     </div>

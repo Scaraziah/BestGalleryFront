@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {
-    Navigate
+    Navigate,
+    Link
 } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import UserPostings from "../userposting/userPosting";
 import Bio from "../bio/bio"
 
@@ -22,7 +23,14 @@ const Profile = (props) => {
             <Row>
                 <Col><Bio user = {user}/></Col>
                 <Col xs= {6} md= {8}><UserPostings user = {user} /></Col>
-                <Col></Col>
+                <Col>
+                    <Link to="/newProfile">
+                      <Button variant="light">Create New Profile</Button>{" "}
+                    </Link>
+                    <Link to="/addPost">
+                      <Button variant="light">Create A New Post</Button>{" "}
+                    </Link>
+                </Col>
     
             </Row>
             </Container>

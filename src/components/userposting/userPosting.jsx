@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
     Card, Button
 } from 'react-bootstrap'
+import GoogleMaps from '../googlemaps/GoogleMaps';
 
 
 const  UserPostings = (props) => {
@@ -13,7 +14,7 @@ const  UserPostings = (props) => {
     useEffect(() => {
         setUser(props.user)
       },[props]);
-
+    
     useEffect(() =>{
         const name = user? user.name: "";
         axios.get(`http://localhost:5000/api/post/${name}`)
@@ -28,36 +29,41 @@ const  UserPostings = (props) => {
         axios.delete(`http://localhost:5000/api/post/${id}`);
     }
 
+    const userName = user? user.name: "user";
+
     return(
-        <Card>
-    {/******* LOGIC FOR THE USER WHO MADE POST ******/}
-        <Card.Header as="h5">User Name</Card.Header>
-        <Card.Body>
-    {/****** LOGIC FOR USERS POST ******/}
-            <Card.Title>Post Subject</Card.Title>
-            <Card.Text>
-                <div>
-                    <ul>
-                        {posts && posts.map((post) => {
-                            return(
-                                <li key={post.id}>
-                                    {post.name}
-                                    <br></br>
-                                    {post.text}
-                                    <br></br>
-                                    Likes {post.likes}
-                                    <br></br>
-                                    <Button variant="danger" type= "delete" onClick={() => handleClick(post.id)}>Delete Post</Button>
-                                    <hr></hr>     
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
-           </Card.Text>
-            
-        </Card.Body>
-        </Card>
+        <div>
+            <div>
+                <ul>
+                    {posts && posts.map((post) => {
+                        return(
+                            <li key={post.id}>
+                                {post.name}
+                                <br></br>
+                                {post.text}
+                                <br></br>
+                                    <ul>
+                                        {post.prisePic.map((pic) => {
+                                            return(
+                                                <li key={pic.id}>
+                                                    <img style={{height:'auto',width:'100%'}} src = {pic} />
+                                                </li>
+                                            )
+                                        })}
+                                    </ul>
+                                <br></br>
+                                <GoogleMaps post = {post} />
+                                <br></br>
+                                Likes {post.likes}
+                                <br></br>
+                                <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
+                                <hr></hr>     
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>           
+        </div>
     );
 }
 
