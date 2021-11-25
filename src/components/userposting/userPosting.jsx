@@ -4,12 +4,13 @@ import {
     Card, Button
 } from 'react-bootstrap'
 import GoogleMaps from '../googlemaps/GoogleMaps';
-
+import AddAddtionalPic from './addAddtionalPic';
 
 const  UserPostings = (props) => {
     const [posts, setPost] = useState([]);
     const jwt = localStorage.getItem('token');
     const [user, setUser] = useState(null);
+    const [url, setUrl] = useState();
 
     useEffect(() => {
         setUser(props.user)
@@ -24,9 +25,18 @@ const  UserPostings = (props) => {
         })
     },[user])
 
-
+    const handlePic = (event) => {
+        console.log(event.target.value)
+        setUrl(event.target.value);
+    }; 
+    
     const handleClick = id =>  {
         axios.delete(`http://localhost:5000/api/post/${id}`);
+    }
+
+    const handleClickPic = id =>  {
+        const newUrl = {url: url}
+        axios.put(`http://localhost:5000/api/post/prisePic/${id}`, newUrl);
     }
 
     const userName = user? user.name: "user";
@@ -37,15 +47,17 @@ const  UserPostings = (props) => {
                 <ul>
                     {posts && posts.map((post) => {
                         return(
-                            <li key={post.id}>
+                            <li key={post._id}>
                                 {post.name}
+                                <br></br>
+                                {post.huntType}
                                 <br></br>
                                 {post.text}
                                 <br></br>
                                     <ul>
                                         {post.prisePic.map((pic) => {
                                             return(
-                                                <li key={pic.id}>
+                                                <li key={pic._id}>
                                                     <img style={{height:'auto',width:'100%'}} src = {pic} />
                                                 </li>
                                             )
@@ -55,9 +67,14 @@ const  UserPostings = (props) => {
                                 <GoogleMaps post = {post} />
                                 <br></br>
                                 Likes {post.likes}
+                                <br />
+                                <input type="url" placeholder="Add anouther pic." onChange={(event) => handlePic(event)} />
                                 <br></br>
+                                <button type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
+                                {/* <AddAddtionalPic post = {post} /> */}
+                                <hr></hr> 
                                 <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
-                                <hr></hr>     
+                                <hr></hr> 
                             </li>
                         )
                     })}

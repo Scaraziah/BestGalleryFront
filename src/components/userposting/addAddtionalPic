@@ -1,0 +1,44 @@
+import React, { useState } from 'react';
+import { useNavigate  } from "react-router-dom"
+import axios from 'axios';
+
+function AddAddtionalPic(props) {
+
+    const [url, setUrl] = useState([]);
+
+
+    // const handlePic = (event) => {
+    //     setPrisePic([...prisePic, event.target.value]);
+    // };
+  
+    const handlePic = (event) => {
+        setUrl(event.target.value);
+    };
+
+      const handleSubmit = async(event)=>{
+          event.preventDefault();
+          const newPic={ url }
+             console.log(newPic)
+             await axios.put(`http://localhost:5000/api/post/prisePic/${props._id}`, newPic)
+             .then(response => console(response.data))
+             navigate(`/profile`)
+          };  
+  
+      return (
+          <div>
+            <form onSubmit ={handleSubmit}>
+                <div className= " row form-group">
+                    <div className = "col">
+                        <input type="url" placeholder="Add anouther pic." onChange={handlePic} />
+                        <br></br>
+                        <button variant="primary" type="submit">Add Pic!</button>
+                        <hr></hr>    
+                    </div>
+                  </div>
+              </form>
+          </div>
+      
+    );
+}
+
+export default AddAddtionalPic;

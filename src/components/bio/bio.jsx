@@ -29,33 +29,27 @@ function Bio(props) {
   const handleClick = (id) => {
     axios.delete(`http://localhost:5000/api/bio/${id}`)
   };
+  
 
   const userName = user? user.name: "user";
 
   return (
     <Card style={{ width: "18rem" }}>
-      {/* <ProfilePic /> */}
       <Card.Body>
-        {/*********** PROFILE NAME LOGIC GOES HERE ***********/}
         <Card.Title>{userName}</Card.Title>
-        <p>Bio:</p>
-        {/*********** BIO LOGIC GOES HERE ***********/}
-        <Card.Text>
+        <p>About:</p>
+        <Card.Text >
           <div>
             <ul>
               {bio &&
                 bio.map((bio) => {
                   return (
                     <li key={bio.id}>
+                      <img style={{height:'auto',width:'100%'}} src = {bio.proPic} />
+                      <br />
                       {bio.text}
                       <br></br>
-                      <Button
-                        variant="danger"
-                        type="delete"
-                        onClick={() => handleClick(bio._id)}
-                      >
-                        Delete Bio
-                      </Button>
+                      <button type= "delete" onClick= {() => handleClick(bio._id)}>Delete Bio</button>
                       <hr></hr>
                     </li>
                   );
