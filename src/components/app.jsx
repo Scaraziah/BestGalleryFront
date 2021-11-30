@@ -11,6 +11,7 @@ import Profile from './profile/profile';
 import NavBar from './navbar/navBar';
 import NewProfile from './profile/newProfile';
 import AddPost from './userposting/addPosting';
+import AllPostings from './userposting/allPostings';
 
 function App() {
     const [user, setUser] = useState()
@@ -46,6 +47,7 @@ function App() {
                 <Route path = "/profile" element = {<Profile user ={user}/>} />
                 <Route path = "/newProfile" element = {<NewProfile user ={user}/>} />
                 <Route path = "/addPost" element = {<AddPost user = {user}/>} />
+                <Route path = "/allPostings" element = {<AllPostings user = {user}/>} />
             </Routes>
         
     </div>

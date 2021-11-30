@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate  } from "react-router-dom"
 import axios from 'axios';
+import "./signUp.css"
 
 function SignUp() {
     const navigate = useNavigate();
@@ -35,10 +36,14 @@ function SignUp() {
         
   
       return (
+        <body className= "signUpBody">
           <div>
             <form onSubmit ={handleSubmit}>
                 <div className= " row form-group">
-                    <div className = "col">
+                    <div className = "col signUpMargin signUpDiv">
+                      <br/>
+                      <br/>
+                      <br/>
                       <input type="name" placeholder="Enter User Name" onChange={handleNameChange} />
                       <br></br>
                       <input type="email" placeholder="Enter email" onChange={handleEmailChange} />
@@ -51,7 +56,7 @@ function SignUp() {
                   </div>
               </form>
           </div>
-      
+        </body>
     );
 }
 

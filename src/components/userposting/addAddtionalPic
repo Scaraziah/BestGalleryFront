@@ -3,13 +3,8 @@ import { useNavigate  } from "react-router-dom"
 import axios from 'axios';
 
 function AddAddtionalPic(props) {
-
+    const navigate = useNavigate();
     const [url, setUrl] = useState([]);
-
-
-    // const handlePic = (event) => {
-    //     setPrisePic([...prisePic, event.target.value]);
-    // };
   
     const handlePic = (event) => {
         setUrl(event.target.value);
@@ -18,10 +13,7 @@ function AddAddtionalPic(props) {
       const handleSubmit = async(event)=>{
           event.preventDefault();
           const newPic={ url }
-             console.log(newPic)
              await axios.put(`http://localhost:5000/api/post/prisePic/${props._id}`, newPic)
-             .then(response => console(response.data))
-             navigate(`/profile`)
           };  
   
       return (

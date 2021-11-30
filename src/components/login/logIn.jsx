@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import "./login.css"
 import { useNavigate } from "react-router-dom"
 
 
@@ -32,20 +33,26 @@ function LogIn() {
       
 
     return (
-        <div>
-          <form onSubmit ={handleSubmit}>
-              <div className= " row form-group">
-                  <div className = "col">
-                    <input type="email" placeholder="Enter email" onChange={handleEmailChange} />
-                    <br></br>
-                    <input type="password" placeholder="Password" onChange={handlePasswordChange}/>
-                    <br></br>
-                    <button variant="primary" type="submit">LogIn</button>
-                    <br></br>  
-                  </div>
-                </div>
-            </form>
-        </div>
+        <body className= "loginBody">
+            <div>
+                <form onSubmit ={handleSubmit}>
+                    <div className= " row form-group">
+                        <div className = "col loginMargin loginDiv">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <input type="email" placeholder="Enter email" onChange={handleEmailChange} />
+                            <br></br>
+                            <input type="password" placeholder="Password" onChange={handlePasswordChange}/>
+                            <br></br>
+                            <button variant="primary" type="submit">LogIn</button>
+                            <br></br>  
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </body>
     );
 }
 

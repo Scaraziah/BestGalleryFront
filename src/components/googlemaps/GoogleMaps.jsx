@@ -8,7 +8,7 @@ const GoogleMaps = (props) => {
         <div className="col text-center" style={{ width: "100%", height: "200px"}}>
             <Map
                 bootstrapURLKeys={{ key : "AIzaSyCIA0pbhqibNqqlMWE9fYo9LFz2LyKCSPI"}}
-                defaultZoom = {10}
+                defaultZoom = {13}
                 defaultCenter={{
                     lat: newLat,
                     lng: newLng

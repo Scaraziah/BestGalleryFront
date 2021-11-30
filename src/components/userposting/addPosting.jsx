@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function AddPost(props) {
     
-const navigate = useNavigate();
+    const navigate = useNavigate();
     const [name, setName] = useState(props.user.name)
     const [lat, setLat] = useState ();
     const [lng, setLng] = useState ();

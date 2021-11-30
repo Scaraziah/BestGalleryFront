@@ -1,0 +1,26 @@
+.signUpDiv{
+    clear: center; 
+    text-align: center; 
+  }
+  
+  .signUpBody{
+    background-image: url("../images/birdDog.png");    
+    width: 100%;
+    height: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .center{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+  
+  .signUpMargin{
+    margin-top: 300px;
+    margin-bottom: 300px;
+    margin-right: 150px;
+    margin-left: 80px;
+  }

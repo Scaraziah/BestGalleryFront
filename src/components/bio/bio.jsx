@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
-// import ProfilePic from './profilepic/profilePic';
-import NewProfile from '../profile/newProfile';
+import { Card } from "react-bootstrap";
+import "./bio.css"
 
 
 function Bio(props) {
@@ -34,31 +33,31 @@ function Bio(props) {
   const userName = user? user.name: "user";
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Body>
-        <Card.Title>{userName}</Card.Title>
-        <p>About:</p>
-        <Card.Text >
-          <div>
-            <ul>
-              {bio &&
-                bio.map((bio) => {
-                  return (
-                    <li key={bio.id}>
-                      <img style={{height:'auto',width:'100%'}} src = {bio.proPic} />
-                      <br />
-                      {bio.text}
-                      <br></br>
-                      <button type= "delete" onClick= {() => handleClick(bio._id)}>Delete Bio</button>
-                      <hr></hr>
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
-        </Card.Text>
-      </Card.Body>
-    </Card>
+      <Card className= "bioBody" style={{ width: "15rem" }}>
+        <Card.Body className= "bioBody">
+          <Card.Title>{userName}</Card.Title>
+          <Card.Text >
+            <div>
+              <ul>
+                {bio &&
+                  bio.map((bio) => {
+                    return (
+                      <li key={bio.id}>
+                        <div className= "bioText">
+                        <img className="bioImg" style={{height:'30%',width:'55%'}} src = {bio.proPic} />
+                        {bio.text}
+                        </div>
+                        <br></br>
+                        <button type= "delete" class="btn btn-secondary btn-sm" onClick= {() => handleClick(bio._id)}>Delete Bio</button>
+                        <hr></hr>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
   );
 }
 

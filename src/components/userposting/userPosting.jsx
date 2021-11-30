@@ -4,7 +4,6 @@ import {
     Card, Button
 } from 'react-bootstrap'
 import GoogleMaps from '../googlemaps/GoogleMaps';
-import AddAddtionalPic from './addAddtionalPic';
 
 const  UserPostings = (props) => {
     const [posts, setPost] = useState([]);
@@ -71,7 +70,6 @@ const  UserPostings = (props) => {
                                 <input type="url" placeholder="Add anouther pic." onChange={(event) => handlePic(event)} />
                                 <br></br>
                                 <button type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
-                                {/* <AddAddtionalPic post = {post} /> */}
                                 <hr></hr> 
                                 <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
                                 <hr></hr> 

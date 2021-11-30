@@ -1,0 +1,14 @@
+.bioBody{
+    background-color: rgb(123, 138, 155);
+    border: 0cm;
+}
+
+.bioImg{
+    float: left
+}
+
+.bioText{
+    text-align: left;
+    letter-spacing: 0px; 
+    color: aliceblue;   
+}

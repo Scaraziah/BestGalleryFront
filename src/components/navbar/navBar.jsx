@@ -12,10 +12,10 @@ const NavBar = ({ user }) => {
 
     return (
     <nav>
-      <Navbar bg="dark">
+      <Navbar>
         <Container>
-          <Navbar.Brand href="#home">
-            <img src={deerBarn} alt="deerBarn" />
+          <Navbar.Brand href="/allPostings">
+            <img className="navImg" src={deerBarn} alt="deerBarn" />
           </Navbar.Brand>
           <div>
             {user && <h4 class = "text-primary" >Welcome {user.name}</h4>}
@@ -35,17 +35,22 @@ const NavBar = ({ user }) => {
                 </React.Fragment>
               )}
               {user && (
-                  <React.Fragment>
+                <React.Fragment>
                   <li>
                     <Link to="/profile">
                       <Button variant="light">Profile</Button>{" "}
                     </Link>
                   </li>
-                <li>
-                  <Link to="/login">  
-                    <Button variant="light" onClick = {handleClick}>Logout</Button>{" "}
-                  </Link>
-                </li>
+                  <li>
+                    <Link to="/allPostings">
+                      <Button variant="light">Posts</Button>{" "}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/login">  
+                      <Button variant="light" onClick = {handleClick}>Logout</Button>{" "}
+                    </Link>
+                  </li>
                 </React.Fragment>
               )}
             </ul>

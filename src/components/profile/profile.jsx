@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {
-    Navigate,
     Link
 } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import UserPostings from "../userposting/userPosting";
 import Bio from "../bio/bio"
+import "./profile.css"
 
 const Profile = (props) => {
     const [user, setUser] = useState ();
-    const [like, setLike] = useState()
 
     useEffect(() => {
         setUser(props.user)
@@ -17,25 +16,33 @@ const Profile = (props) => {
     )
 
     return (
-        
-        <div>
-            <Container>
-            <Row>
-                <Col><Bio user = {user}/></Col>
-                <Col xs= {6} md= {8}><UserPostings user = {user} /></Col>
-                <Col>
-                    <Link to="/newProfile">
-                      <Button variant="light">Create New Profile</Button>{" "}
-                    </Link>
-                    <Link to="/addPost">
-                      <Button variant="light">Create A New Post</Button>{" "}
-                    </Link>
-                </Col>
-    
-            </Row>
-            </Container>
+        <body className = "profileBody">
+            <div>
+                <div className= "row">
+                    <div className= "col center">
+                            <Link to="/newProfile">
+                            <Button className= "right btn btn-secondary btn-lg btn-block center">Create New Profile</Button>{" "}
+                            </Link>
+                    </div>
+                    <div className= "col center">
+                            <Link to="/addPost">
+                            <Button className= "center btn btn-secondary btn-lg btn-block">Create A New Post</Button>{" "}
+                            </Link>
+                    </div>
+                </div>
+                <Container>
+                    <Row>
+                    
+                        <Col><Bio user = {user}/></Col>
+                    
+                        <Col xs= {6} md= {8}><UserPostings user = {user} /></Col>
+                    
             
-        </div>
+                    </Row>
+                </Container>
+                
+            </div>
+        </body>
     );
 }
 
