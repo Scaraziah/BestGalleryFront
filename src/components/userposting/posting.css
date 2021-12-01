@@ -1,0 +1,14 @@
+.postText{
+    text-align: left;
+    letter-spacing: 0px; 
+    color: rgb(218, 127, 52);   
+}
+
+.postBody{
+    background-image: url("../images/birdDog.png");
+}
+
+.loginDiv{
+    clear: center; 
+    text-align: center; 
+  }

@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {
-    Card, Button
-} from 'react-bootstrap'
 import GoogleMaps from '../googlemaps/GoogleMaps';
-
+import CreateReply from '../reply/reply'; 
+import "./posting.css";
 
 const  AllPostings = (props) => {
 const [posts, setPost] = useState([]);
-const jwt = localStorage.getItem('token');
 const [user, setUser] = useState(null);
 const [optionValue, setOptionValue] = useState("");
 
 const handleSelect = (e) => {
-    console.log(e.target.value);
     setOptionValue(e.target.value);
 };
 
@@ -35,12 +31,10 @@ useEffect(() =>{
     axios.get(`http://localhost:5000/api/post/`)
     .then(response => { 
         setPost(response.data);
-        console.log(response.data);
     })
 },[user])
  
 const filterPost = () => {
-    console.log("Option Value",optionValue)
     let newFilterPost;
     if(posts){
         if(optionValue){
@@ -57,55 +51,87 @@ const filterPost = () => {
 const myFilter = filterPost();
 
     return(
-    <form>  
-        <div>
-            <div>
-            <div>
-                <h1>Types of Adventure</h1>
-                <select value={setOptionValue} onChange={handleSelect}>
-                    <option selected value="">Filter</option>
-                    <option value="Big Game">Big Game</option>
-                    <option value="Birds">Birds</option>
-                    <option value="Fishing">Fishing</option>
-                    <option value="Lodge">Lodge</option>
-                </select>
+        <body className="postBody">   
+            <div>  
+                <div>
+                    <div>
+                        <div>
+                            <h5>Types of Adventure</h5>
+                            <select value={optionValue} onChange={handleSelect}>
+                                <option selected value="">Filter</option>
+                                <option value="Big Game">Big Game</option>
+                                <option value="Birds">Birds</option>
+                                <option value="Fishing">Fishing</option>
+                                <option value="Lodge">Lodge</option>
+                            </select>
+                        </div>
+                        <ul>
+                            {posts && myFilter.map((post) => {
+                                return(
+                                    <div className="container postText">
+                                        <li key={post._id}>
+                                            <div className="row">
+                                                <div className="col">
+                                                    {post.name}
+                                                    <br></br>
+                                                    {post.huntType}
+                                                    <br></br>
+                                                </div>
+                                                <div className="col">    
+                                                    {post.text}
+                                                    <br></br>
+                                                </div>
+                                            </div>
+                                        </li>
+                                            <div className="row">
+                                                <div className="col">                                   
+                                                {post.prisePic.map((pic) => {
+                                                    return(
+                                                        <li key={pic}>
+                                                            <img style={{height:'auto',width:'50%'}} src = {pic} alt="" />
+                                                        </li>
+                                                    )
+                                                })}
+                                                </div>
+                                                <div className="col">                                     
+                                                    <GoogleMaps post = {post} />
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col"> 
+                                                    Likes ({post.likes})
+                                                    <br/>
+                                                    Dislikes ({post.dislikes})
+                                                </div>
+                                                <div className="col">
+                                                    <button type= "like" onClick= {() => handleLikeClick(post._id)}>Like Post</button>
+                                                    <button type= "dislike" onClick= {() => handleDislikeClick(post._id)}>Dislike Post</button>
+                                                    <br/>
+                                                    <CreateReply post = {post} />
+                                                </div>
+                                                <div className="row">  
+                                                    {post.replies && post.replies.map((reply) =>{
+                                                        return(
+                                                            <li key={reply._id}>
+                                                                {reply.text}
+                                                                <hr/>
+                                                            </li>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
+                                        <hr />
+                                    </div>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>           
                 </div>
-                <ul>
-                    {posts && myFilter.map((post) => {
-                        return(
-                            <li key={post._id}>
-                                {post.name}
-                                <br></br>
-                                {post.huntType}
-                                <br></br>
-                                {post.text}
-                                <br></br>
-                                    <ul>
-                                        {post.prisePic.map((pic) => {
-                                            return(
-                                                <li key={pic._id}>
-                                                    <img style={{height:'auto',width:'100%'}} src = {pic} />
-                                                </li>
-                                            )
-                                        })}
-                                    </ul>
-                                <br></br>
-                                <GoogleMaps post = {post} />
-                                <br></br>
-                                Likes {post.likes}
-                                <button type= "like" onClick= {() => handleLikeClick(post._id)}>Like Post</button>
-                                <br/>
-                                Dislikes {post.dislikes}
-                                <button type= "dislike" onClick= {() => handleDislikeClick(post._id)}>Dislike Post</button>
-                                <hr></hr>  
-                                <br />
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>           
-        </div>
-    </form>  
+            </div>
+        </body>   
     );
 }
 

@@ -44,7 +44,7 @@ function Bio(props) {
                     return (
                       <li key={bio.id}>
                         <div className= "bioText">
-                        <img className="bioImg" style={{height:'30%',width:'55%'}} src = {bio.proPic} />
+                        <img className="bioImg" style={{height:'30%',width:'55%'}} src = {bio.proPic} alt= "" />
                         {bio.text}
                         </div>
                         <br></br>

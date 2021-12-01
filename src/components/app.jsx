@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
     Routes,
-    Route,
-    Navigate
+    Route
 } from "react-router-dom";
 import LogIn from './login/logIn'
 import SignUp from './signup/signUp';

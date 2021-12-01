@@ -18,3 +18,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     }
+
+.profileMargin{
+  margin-top: 300px;
+  margin-bottom: 300px;
+  margin-right: 150px;
+  margin-left: 150px;
+}
+
+.profileDiv{
+  clear: center; 
+  text-align: center; 
+}

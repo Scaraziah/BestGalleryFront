@@ -18,7 +18,9 @@ const NavBar = ({ user }) => {
             <img className="navImg" src={deerBarn} alt="deerBarn" />
           </Navbar.Brand>
           <div>
-            {user && <h4 class = "text-primary" >Welcome {user.name}</h4>}
+            {user && <h4 className = "navTextOj" >Welcome 
+            <br/>
+            {user.name}</h4>}
             <ul>
               {!user && (
                 <React.Fragment>

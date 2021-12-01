@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {
-    Card, Button
-} from 'react-bootstrap'
 import GoogleMaps from '../googlemaps/GoogleMaps';
+import "./posting.css"
 
 const  UserPostings = (props) => {
     const [posts, setPost] = useState([]);
-    const jwt = localStorage.getItem('token');
     const [user, setUser] = useState(null);
     const [url, setUrl] = useState();
 
@@ -38,42 +35,63 @@ const  UserPostings = (props) => {
         axios.put(`http://localhost:5000/api/post/prisePic/${id}`, newUrl);
     }
 
-    const userName = user? user.name: "user";
-
     return(
-        <div>
+        <div className= "postText">
             <div>
                 <ul>
                     {posts && posts.map((post) => {
                         return(
-                            <li key={post._id}>
-                                {post.name}
-                                <br></br>
-                                {post.huntType}
-                                <br></br>
-                                {post.text}
-                                <br></br>
-                                    <ul>
-                                        {post.prisePic.map((pic) => {
-                                            return(
-                                                <li key={pic._id}>
-                                                    <img style={{height:'auto',width:'100%'}} src = {pic} />
-                                                </li>
-                                            )
-                                        })}
-                                    </ul>
-                                <br></br>
-                                <GoogleMaps post = {post} />
-                                <br></br>
-                                Likes {post.likes}
-                                <br />
-                                <input type="url" placeholder="Add anouther pic." onChange={(event) => handlePic(event)} />
-                                <br></br>
-                                <button type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
-                                <hr></hr> 
-                                <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
-                                <hr></hr> 
-                            </li>
+                            <div className="container">
+                                <li key={post._id}>
+                                    <div className="row">
+                                        <div className="col">
+                                            Type:
+                                            <br/>
+                                            {post.huntType}
+                                        </div>
+                                        <div className="col">
+                                            Adventure:
+                                            <br/>
+                                            {post.text}
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col">
+                                            <ul>
+                                                {post.prisePic.map((pic) => {
+                                                    return(
+                                                        <li key={pic._id}>
+                                                            <img style={{height:'auto',width:'50%'}} src = {pic} alt=""/>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                            <GoogleMaps post = {post} />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            Likes ({post.likes})
+                                            <br />
+                                            Disikes ({post.dislikes})
+                                            <br />
+                                            <input type="url" placeholder="Add anouther pic." onChange={(event) => handlePic(event)} />
+                                            <br />
+                                            <button type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
+                                        </div>
+                                        <div className="col">
+                                        <br />
+                                        <br />
+                                        <br />                                 
+                                        <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
+                                        </div>
+                                    <hr></hr>
+                                    </div> 
+                                </li>
+                            </div>
                         )
                     })}
                 </ul>

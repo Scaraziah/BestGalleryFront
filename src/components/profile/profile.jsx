@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import {
     Link
 } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
 import UserPostings from "../userposting/userPosting";
 import Bio from "../bio/bio"
 import "./profile.css"
+import mix from '../images/mix.png'
 
 const Profile = (props) => {
     const [user, setUser] = useState ();
@@ -21,26 +21,32 @@ const Profile = (props) => {
                 <div className= "row">
                     <div className= "col center">
                             <Link to="/newProfile">
-                            <Button className= "right btn btn-secondary btn-lg btn-block center">Create New Profile</Button>{" "}
+                            <button className= "right btn btn-secondary btn-lg btn-block center">Create New Profile</button>{" "}
                             </Link>
                     </div>
                     <div className= "col center">
                             <Link to="/addPost">
-                            <Button className= "center btn btn-secondary btn-lg btn-block">Create A New Post</Button>{" "}
+                            <button className= "center btn btn-secondary btn-lg btn-block">Create A New Post</button>{" "}
                             </Link>
                     </div>
                 </div>
-                <Container>
-                    <Row>
-                    
-                        <Col><Bio user = {user}/></Col>
-                    
-                        <Col xs= {6} md= {8}><UserPostings user = {user} /></Col>
-                    
-            
-                    </Row>
-                </Container>
-                
+                <hr />
+                <div class="container">
+                    <div class="row">
+                        <div class="col">                    
+                            <Bio user = {user}/>
+                        </div>
+                        <div class="col"> 
+                            <img style={{height:'auto',width:'100%'}} src = {mix} alt= "" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col"> 
+                        <UserPostings user = {user} />
+                        </div>            
+                    </div>
+                </div>               
             </div>
         </body>
     );
