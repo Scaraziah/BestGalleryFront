@@ -48,26 +48,33 @@ function AddPost(props) {
           };  
   
       return (
-          <div>
-            <form onSubmit ={handleSubmit}>
-                <div className= " row form-group">
-                    <div className = "col">
-                      <input type="lat" placeholder="Latitude " onChange={handleLat} />
-                      <br></br>
-                      <input type="lng" placeholder="Longitude " onChange={handleLng} />
-                      <br></br>
-                      <input type="huntType" placeholder="Big Game, Bird, Fishing or Lodge" onChange={handleHunt} />
-                      <br></br>
-                      <input type="text" placeholder="About your adventure!" onChange={handleText} />
-                      <br></br>
-                      <input type="prisePic" placeholder="Url for of your adventure!" onChange={handlePic} />
-                      <br></br>
-                      <button variant="primary" type="submit">Add Trip!</button>
-                      <br></br>  
+          
+        <body className="postBody">
+            <div>
+                <form onSubmit ={handleSubmit}>
+                    <div className= " row form-group">
+                        <div className = "col postMargin postDiv">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <input type="lat" placeholder="Latitude " onChange={handleLat} />
+                        <br></br>
+                        <input type="lng" placeholder="Longitude " onChange={handleLng} />
+                        <br></br>
+                        <input type="huntType" placeholder="Big Game, Bird, Fishing or Lodge" onChange={handleHunt} />
+                        <br></br>
+                        <input type="text" placeholder="About your adventure!" onChange={handleText} />
+                        <br></br>
+                        <input type="prisePic" placeholder="Url for of your adventure!" onChange={handlePic} />
+                        <br></br>
+                        <button variant="primary" type="submit">Add Trip!</button>
+                        <br></br>  
+                        </div>
                     </div>
-                  </div>
-              </form>
-          </div>     
+                </form>
+            </div>
+        </body>     
     );
 }
 

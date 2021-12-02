@@ -6,9 +6,26 @@
 
 .postBody{
     background-image: url("../images/birdDog.png");
+    width: 100%;
+    height: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .loginDiv{
     clear: center; 
     text-align: center; 
   }
+
+.postMargin{
+margin-top: 300px;
+margin-bottom: 300px;
+margin-right: 150px;
+margin-left: 150px;
+}
+
+.postDiv{
+clear: center; 
+text-align: center; 
+}

@@ -38,12 +38,16 @@ function NewProfile(props) {
                             <br/>
                             <br/>
                             <br/>
+                            <br/>
                             <input type="proPic" placeholder="Pic Link" onChange={handleProLink} />
                             <br></br>
                             <input type="text" placeholder="About You" onChange={handleProInfo} />
                             <br></br>
                             <button variant="primary" type="submit">Update Profile</button>
-                            <br></br>  
+                            <br></br> 
+                            <br/>
+                            <br/>
+                            <br/> 
                         </div>
                     </div>
                 </form>
