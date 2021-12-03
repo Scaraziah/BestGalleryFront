@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import {
+    Link
+} from "react-router-dom";
 import axios from 'axios';
 import GoogleMaps from '../googlemaps/GoogleMaps';
 import "./posting.css"
@@ -82,14 +85,18 @@ const  UserPostings = (props) => {
                                             <br />
                                             <button type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
                                         </div>
-                                        <div className="col">
                                         <br />
                                         <br />
                                         <br />                                 
                                         <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
-                                        </div>
                                     <hr></hr>
                                     </div> 
+                                        <div className="col">
+                                        <br />
+                                        <Link to= {`/editPost/${post._id}`}>
+                                            <button className= "btn btn-secondary btn-sm">Edit Post</button>
+                                        </Link>
+                                        </div>
                                 </li>
                             </div>
                         )

@@ -8,12 +8,12 @@ nav {
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../images/mix.png");
+    background-image: url("../images/brick.png");
 }
 
 .navImg {
     height: 90px;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .navTextOj{

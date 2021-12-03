@@ -1,14 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate  } from "react-router-dom"
 import axios from 'axios';
 import "./profile.css"
 
-function NewProfile(props) {
+function EditProfile(props) {
     const navigate = useNavigate();
-    const [name, setName] = useState(props.user.name)
-    const [proPic, setProPic] = useState ('');
-    const [text, setText] = useState('');
-  
+    const [name, setName] = useState(props.user.name);
+    const [user, setUser] = useState([])
+    const [proPic, setProPic] = useState ("");
+    const [text, setText] = useState("");
+    const [userId, setUserId] = useState()
+    const [bio, setBio] = useState([])
+
+    useEffect(() => {
+        setUser(props.user)
+      },[props]);
+
+    useEffect(() => {
+    const name = user? user.name: "";
+    axios
+        .get(`http://localhost:5000/api/bio/${name}`)
+        .then((response) => {
+        setBio(response.data);
+        console.log(response.data);
+        });
+    }, [user]);
+
+    useEffect(() => {
+        setProPic(bio.proPic)
+        setText(bio.text)
+        setUserId(bio._id)
+      },[props]);
+
+
     const handleProLink = (event) => {
         setProPic(event.target.value);
     };
@@ -19,15 +43,14 @@ function NewProfile(props) {
   
       const handleSubmit = async(event)=>{
           event.preventDefault();
-          const bio={
-            name:  name,
+          const newBio={
             proPic: proPic,  
             text: text
              }
-             console.log(bio)
-             await axios.post(`http://localhost:5000/api/bio/`, bio)
+             console.log("Bio", bio)
+             await axios.put(`http://localhost:5000/api/bio/${bio[0]._id}`, newBio)
              navigate(`/profile`)
-          };  
+          };   
    
       return (
           <body className = "profileBody">
@@ -39,9 +62,9 @@ function NewProfile(props) {
                             <br/>
                             <br/>
                             <br/>
-                            <input type="proPic" placeholder="Pic Link" onChange={handleProLink} />
+                            <input type="proPic" placeholder="Update Pic" onChange={handleProLink} />
                             <br></br>
-                            <input type="text" placeholder="About You" onChange={handleProInfo} />
+                            <input type="text" placeholder="Update Your Bio" onChange={handleProInfo} />
                             <br></br>
                             <button variant="primary" type="submit">Update Profile</button>
                             <br></br> 
@@ -56,4 +79,4 @@ function NewProfile(props) {
     );
 }
 
-export default NewProfile;
+export default EditProfile;

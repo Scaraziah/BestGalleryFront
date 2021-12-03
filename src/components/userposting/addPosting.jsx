@@ -47,8 +47,7 @@ function AddPost(props) {
              .then(navigate(`/profile`))
           };  
   
-      return (
-          
+      return (   
         <body className="postBody">
             <div>
                 <form onSubmit ={handleSubmit}>
@@ -62,7 +61,7 @@ function AddPost(props) {
                         <br></br>
                         <input type="lng" placeholder="Longitude " onChange={handleLng} />
                         <br></br>
-                        <input type="huntType" placeholder="Big Game, Bird, Fishing or Lodge" onChange={handleHunt} />
+                        <input type="huntType" placeholder="Big Game, Birds, Fishing or Lodge" onChange={handleHunt} />
                         <br></br>
                         <input type="text" placeholder="About your adventure!" onChange={handleText} />
                         <br></br>

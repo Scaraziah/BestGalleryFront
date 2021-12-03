@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card } from "react-bootstrap";
+import {
+  Link
+} from "react-router-dom";
 import "./bio.css"
 
 
@@ -54,6 +57,11 @@ function Bio(props) {
                     );
                   })}
               </ul>
+              <div className= "col center">
+                  <Link to="/editProfile" bio = {bio}>
+                  <button className= "btn btn-secondary btn-sm">Edit New Profile</button>
+                  </Link>
+              </div>
             </div>
           </Card.Text>
         </Card.Body>
