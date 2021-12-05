@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import GoogleMaps from '../googlemaps/GoogleMaps';
 import CreateReply from '../reply/reply'; 
 import "./posting.css";
@@ -48,15 +49,28 @@ const filterPost = () => {
     }
 }
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 const myFilter = filterPost();
 
     return(
-        <body className="postBody">   
+        <body className="allPostBody">   
             <div>  
                 <div>
                     <div>
                         <div>
-                            <h5>Types of Adventure</h5>
+                            <h5 className="myPostTitle">Types of Adventure</h5>
                             <select value={optionValue} onChange={handleSelect}>
                                 <option selected value="">Filter</option>
                                 <option value="Big Game">Big Game</option>
@@ -72,14 +86,15 @@ const myFilter = filterPost();
                                         <li key={post._id}>
                                             <div className="row">
                                                 <div className="col">
-                                                    {post.name}
+                                                    User: {post.name}
                                                     <br></br>
-                                                    {post.huntType}
+                                                    Adventure Type: {post.huntType}
                                                     <br></br>
                                                 </div>
                                                 <div className="col">    
-                                                    {post.text}
+                                                    About: {post.text}
                                                     <br></br>
+                                                    Date of Post: {formatDate(post.timeStamp)}
                                                 </div>
                                             </div>
                                         </li>
@@ -87,9 +102,11 @@ const myFilter = filterPost();
                                                 <div className="col">                                   
                                                 {post.prisePic.map((pic) => {
                                                     return(
+                                                        <Link to= {`/photoGallery/${post._id}`}>
                                                         <li key={pic}>
                                                             <img style={{height:'auto',width:'50%'}} src = {pic} alt="" />
                                                         </li>
+                                                        </Link>
                                                     )
                                                 })}
                                                 </div>
@@ -115,14 +132,14 @@ const myFilter = filterPost();
                                                         return(
                                                             <li key={reply._id}>
                                                                 {reply.text}
-                                                                <hr/>
+                                                                <hr className="halfBr"/>
                                                             </li>
                                                             )
                                                         })
                                                     }
                                                 </div>
                                             </div>
-                                        <hr />
+                                        <hr className="lineColor" />
                                     </div>
                                     )
                                 })

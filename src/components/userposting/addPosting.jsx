@@ -57,11 +57,20 @@ function AddPost(props) {
                         <br/>
                         <br/>
                         <br/>
+                        <div>
+                            <h5 className="myPostAddTitle">Types of Adventure</h5>
+                            <select value={huntType} onChange={handleHunt}>
+                                <option selected value="">Filter</option>
+                                <option value="Big Game">Big Game</option>
+                                <option value="Birds">Birds</option>
+                                <option value="Fishing">Fishing</option>
+                                <option value="Lodge">Lodge</option>
+                            </select>
+                        </div>
+                        <br></br>
                         <input type="lat" placeholder="Latitude " onChange={handleLat} />
                         <br></br>
                         <input type="lng" placeholder="Longitude " onChange={handleLng} />
-                        <br></br>
-                        <input type="huntType" placeholder="Big Game, Birds, Fishing or Lodge" onChange={handleHunt} />
                         <br></br>
                         <input type="text" placeholder="About your adventure!" onChange={handleText} />
                         <br></br>

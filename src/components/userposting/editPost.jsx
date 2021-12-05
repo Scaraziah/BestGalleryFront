@@ -11,17 +11,9 @@ function EditPost(props) {
     const [text, setText] = useState('');
     const [post, setPost] = useState();
   
-    console.log("Props", getId)
-  
     useEffect(() => {
         setPost(props.post)
-      },[props]);
-
-    useEffect(() => {
-    setLat(post.lat)
-    setLng(post.lng)
-    setText(post.text)
-    },[props]);  
+      },[props]);  
 
     const handleLat = (event) => {
         setLat(event.target.value);
@@ -37,10 +29,10 @@ function EditPost(props) {
 
     useEffect(() => {
     axios
-        .get(`http://localhost:5000/api/post/${getId.id}`)
+        .get(`http://localhost:5000/api/post/editPost/${getId.id}`)
         .then((response) => {
         setPost(response.data);
-        console.log(response.data);
+        console.log("Res", response.data);
         });
     }, [getId]);
   
@@ -52,7 +44,7 @@ function EditPost(props) {
         text: text
             }
             console.log("Post", post)
-            await axios.put(`http://localhost:5000/api/bio/${getId.id}`, newPost)
+            await axios.put(`http://localhost:5000/api/post/${post._id}`, newPost)
             navigate(`/profile`)
         };   
    

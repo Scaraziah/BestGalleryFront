@@ -14,9 +14,10 @@ const Profile = (props) => {
         setUser(props.user)
     },[props]
     )
-
+    const userName = user? user.name: "user";
+    
     return (
-        <body className = "profileBody">
+        <body className = "myProfileBody">
             <div>
                 <div className= "row">
                     <div className= "col center">
@@ -31,9 +32,9 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <hr />
-                <div class="container">
-                    <div class="row">
-                        <div class="col">                    
+                <div className="container">
+                    <div className="row">
+                        <div className="col">                    
                             <Bio user = {user}/>
                         </div>
                         <div class="col"> 
@@ -41,8 +42,9 @@ const Profile = (props) => {
                         </div>
                     </div>
                     <hr />
-                    <div class="row">
-                        <div class="col"> 
+                    <h4 className="profileH4"> All My Posts</h4>
+                    <div className="row profileTopPadSm">
+                        <div className="col profileTopPadSm"> 
                         <UserPostings user = {user} />
                         </div>            
                     </div>

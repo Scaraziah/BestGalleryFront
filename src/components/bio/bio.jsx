@@ -38,7 +38,7 @@ function Bio(props) {
   return (
       <Card className= "bioBody" style={{ width: "15rem" }}>
         <Card.Body className= "bioBody">
-          <Card.Title>{userName}</Card.Title>
+          <Card.Title className="bioText">{userName}</Card.Title>
           <Card.Text >
             <div>
               <ul>
@@ -51,17 +51,15 @@ function Bio(props) {
                         {bio.text}
                         </div>
                         <br></br>
-                        <button type= "delete" class="btn btn-secondary btn-sm" onClick= {() => handleClick(bio._id)}>Delete Bio</button>
+                        <Link to="/editProfile" bio = {bio}>
+                        <button className= "btn btn-secondary btn-sm bioRightMar">Edit Profile</button>
+                        </Link>
+                        <button type= "delete" class="btn btn-secondary btn-sm" onClick= {() => handleClick(bio._id)}>Delete Bio</button>              
                         <hr></hr>
                       </li>
                     );
                   })}
               </ul>
-              <div className= "col center">
-                  <Link to="/editProfile" bio = {bio}>
-                  <button className= "btn btn-secondary btn-sm">Edit New Profile</button>
-                  </Link>
-              </div>
             </div>
           </Card.Text>
         </Card.Body>

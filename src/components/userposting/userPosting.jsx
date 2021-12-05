@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import GoogleMaps from '../googlemaps/GoogleMaps';
 import "./posting.css"
@@ -17,10 +15,10 @@ const  UserPostings = (props) => {
     
     useEffect(() =>{
         const name = user? user.name: "";
-        axios.get(`http://localhost:5000/api/post/${name}`)
+        axios.get(`http://localhost:5000/api/post/name/${name}`)
         .then(response => { 
             setPost(response.data);
-            console.log(response.data);
+            console.log("Res",response.data);
         })
     },[user])
 
@@ -39,7 +37,7 @@ const  UserPostings = (props) => {
     }
 
     return(
-        <div className= "postText">
+        <div>
             <div>
                 <ul>
                     {posts && posts.map((post) => {
@@ -47,12 +45,12 @@ const  UserPostings = (props) => {
                             <div className="container">
                                 <li key={post._id}>
                                     <div className="row">
-                                        <div className="col">
+                                        <div className="col myPostText">
                                             Type:
                                             <br/>
                                             {post.huntType}
                                         </div>
-                                        <div className="col">
+                                        <div className="col myPostText">
                                             Adventure:
                                             <br/>
                                             {post.text}
@@ -64,9 +62,11 @@ const  UserPostings = (props) => {
                                             <ul>
                                                 {post.prisePic.map((pic) => {
                                                     return(
+                                                        <Link to= {`/photoGallery/${post._id}`}>
                                                         <li key={pic._id}>
                                                             <img style={{height:'auto',width:'50%'}} src = {pic} alt=""/>
                                                         </li>
+                                                        </Link>
                                                     )
                                                 })}
                                             </ul>
@@ -76,27 +76,22 @@ const  UserPostings = (props) => {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col">
+                                        <div className="col myPostText">
                                             Likes ({post.likes})
                                             <br />
                                             Disikes ({post.dislikes})
                                             <br />
-                                            <input type="url" placeholder="Add anouther pic." onChange={(event) => handlePic(event)} />
+                                            <input className= "postRightMar" type="url" placeholder="Add anouther pic." onChange={(event) => handlePic(event)} />
                                             <br />
-                                            <button type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
-                                        </div>
-                                        <br />
-                                        <br />
-                                        <br />                                 
-                                        <button type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
-                                    <hr></hr>
-                                    </div> 
-                                        <div className="col">
+                                            <button className= "btn btn-secondary btn-sm postRightMar" type= "update" onClick= {() => handleClickPic(post._id)}>Add Pic</button>
+                                        <button className= "btn btn-secondary btn-sm postRightMar" type= "delete" onClick= {() => handleClick(post._id)}>Delete Post</button>
                                         <br />
                                         <Link to= {`/editPost/${post._id}`}>
-                                            <button className= "btn btn-secondary btn-sm">Edit Post</button>
+                                            <button className= "btn btn-secondary btn-sm postRightMar">Edit Post</button>
                                         </Link>
-                                        </div>
+                                        </div>                                 
+                                    <hr></hr>
+                                    </div> 
                                 </li>
                             </div>
                         )

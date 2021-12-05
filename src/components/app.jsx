@@ -13,6 +13,7 @@ import NewProfile from './profile/newProfile';
 import AddPost from './userposting/addPosting';
 import AllPostings from './userposting/allPostings';
 import EditPost from './userposting/editPost';
+import PhotoGallery from './potogallery/photoGallery';
 
 function App() {
     const [user, setUser] = useState()
@@ -40,6 +41,7 @@ function App() {
                 <Route path = "/addPost" element = {<AddPost user = {user}/>} />
                 <Route path = "/allPostings" element = {<AllPostings user = {user}/>} />
                 <Route path = "/editPost/:id" element = {<EditPost />} />
+                <Route path = "/photoGallery/:id" element = {<PhotoGallery />} />
             </Routes>
         
     </div>

@@ -9,6 +9,14 @@
     width: 100%;
     padding: 10px;
     }
+  .myProfileBody{
+    background-image: url("../images/profileBack.png");    
+    width: 100%;
+    height: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 
 .profileBody{
     background-image: url("../images/woods.png");    
@@ -29,4 +37,20 @@
 .profileDiv{
   clear: center; 
   text-align: center; 
+}
+
+.profileH4{
+  clear: center; 
+  text-align: center;
+  color: rgb(0, 0, 0);
+  padding-bottom: 0px; 
+  text-shadow: 5px 5px 5px red;
+}
+
+.profileTopPadSm{
+  padding-top: 0px;
+}
+
+.profileRightMar{
+  margin-right: 5px;
 }
