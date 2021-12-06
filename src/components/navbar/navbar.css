@@ -22,3 +22,9 @@ nav {
     text-shadow: 2px 2px 5px rgb(209, 78, 2);
 }
 
+.navTitleText{
+    text-align: center;
+    letter-spacing: 0px; 
+    color: rgb(27, 1, 173);
+    text-shadow: 2px 2px 5px rgb(209, 78, 2);   
+}

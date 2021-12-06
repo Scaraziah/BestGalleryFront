@@ -42,7 +42,10 @@ function SignUp() {
                 <div className= " row form-group">
                     <div className = "col signUpMargin signUpDiv">
                       <br/>
-                      <br/>
+                      <h3 className=" col navTitleText"> Best of the Outdoors
+                            <br />
+                            The Outdoor Gallery
+                            </h3>
                       <br/>
                       <input type="name" placeholder="Enter User Name" onChange={handleNameChange} />
                       <br></br>

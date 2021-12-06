@@ -24,3 +24,10 @@
     margin-right: 150px;
     margin-left: 80px;
   }
+
+  .navTitleText{
+    text-align: center;
+    letter-spacing: 0px; 
+    color: rgb(27, 1, 173);
+    text-shadow: 2px 2px 5px rgb(209, 78, 2);   
+}

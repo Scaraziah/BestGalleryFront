@@ -39,8 +39,10 @@ function LogIn() {
                     <div className= " row form-group">
                         <div className = "col loginMargin loginDiv">
                             <br/>
-                            <br/>
-                            <br/>
+                            <h3 className=" col navTitleText"> Best of the Outdoors
+                            <br />
+                            The Outdoor Gallery
+                            </h3>
                             <br/>
                             <input type="email" placeholder="Enter email" onChange={handleEmailChange} />
                             <br></br>
