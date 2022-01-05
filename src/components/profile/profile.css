@@ -10,7 +10,7 @@
     padding: 10px;
     }
   .myProfileBody{
-    background-image: url("../images/profileBack.png");    
+    background-color: aliceblue;    
     width: 100%;
     height: 100%;
     background-position: top;
@@ -24,7 +24,7 @@
     height: 100%;
     background-position: top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     }
 
 .profileMargin{
